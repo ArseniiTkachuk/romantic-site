@@ -1,0 +1,108 @@
+:root {
+  /* ---- Палітра: глибока нічна троянда з максимальним контрастом ---- */
+  --color-paper: #0a0103;       /* майже чорний глибокий бордовий для максимальної глибины фону */
+  --color-paper-deep: #1c0307;  /* темна підкладка для карток/секцій */
+  --color-ink: #FFFFFF;         /* чистий білий текст для ідеальної читабельності */
+  --color-ink-soft: #F2C4CE;    /* м'який світло-рожевий для другорядного тексту */
+  --color-rose: #FF2A4D;        /* соковита яскраво-кривава троянда */
+  --color-rose-deep: #FF6B81;   /* яскравий акцентний рожево-червоний для заголовків */
+  --color-gold: #FFD166;        /* сяюче золото для особливих акцентів */
+  --color-blush: #2d050a;       /* глибокий винний відтінок карток */
+  --color-white: #FFFFFF;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-script: 'Cormorant Garamond', Georgia, serif;
+  --font-utility: 'Jost', sans-serif;
+
+  --shadow-soft: 0 20px 60px -20px rgba(255, 42, 77, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-script);
+  font-size: 20px; /* Зробили базовий шрифт трохи більшим і розбірливішим */
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-white);
+  /* Додаємо глибоке червоне світіння, щоб заголовки чітко відривалися від фону */
+  text-shadow: 0 2px 20px rgba(255, 42, 77, 0.6), 0 0 40px rgba(255, 42, 77, 0.3);
+}
+
+.eyebrow {
+  font-family: var(--font-utility);
+  font-size: 14px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(255, 209, 102, 0.4);
+}
+
+.section {
+  position: relative;
+  padding: 120px 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 80px 20px;
+  }
+  body {
+    font-size: 18px;
+  }
+}
+
+/* оксамитова текстура поверх темного фону з трохи вищим контрастом крапок */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.25;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+::selection {
+  background: var(--color-rose);
+  color: var(--color-white);
+}
+
+button {
+  font-family: var(--font-utility);
+  cursor: pointer;
+}
+
+/* доступність: поважаємо reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-rose-deep);
+  outline-offset: 3px;
+}
