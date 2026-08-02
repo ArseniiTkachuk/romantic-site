@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <footer class="footer" id="footer">
     <div class="rose-row">🌹 ❀ 🌹</div>
     <h2 class="main-line">{{ config.footer.mainLine }}</h2>
     <p v-for="(line, i) in config.footer.subLines" :key="i" class="sub-line">

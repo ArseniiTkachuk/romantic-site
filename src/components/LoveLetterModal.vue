@@ -1,5 +1,5 @@
 <template>
-  <section class="section letter-section">
+  <section class="section letter-section" id="letter">
     <p class="eyebrow">для тебе</p>
     <h2>Великий лист</h2>
     <p class="hint">натисни на конверт</p>

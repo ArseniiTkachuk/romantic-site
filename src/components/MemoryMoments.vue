@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section class="section" id="moments">
     <p class="eyebrow">теплі спогади</p>
     <h2>Моменти, які хочеться пам'ятати</h2>
 

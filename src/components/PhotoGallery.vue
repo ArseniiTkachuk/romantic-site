@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section class="section" id="gallery">
     <p class="eyebrow">спільні моменти</p>
     <h2>Наша галерея</h2>
 

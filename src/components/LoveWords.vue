@@ -1,5 +1,5 @@
 <template>
-  <section class="section words-section">
+  <section class="section words-section" id="words">
     <p class="eyebrow">слова на сьогодні</p>
     <h2 class="words-title">{{ todayWord }}</h2>
     <div class="divider">❀</div>

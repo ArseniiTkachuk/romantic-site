@@ -1,5 +1,5 @@
 <template>
-  <section class="hero">
+  <section class="hero" id="hero">
     <div class="hero-decor">🌹</div>
 
     <h1 class="hero-title">{{ heroMessage }}</h1>

@@ -1,5 +1,8 @@
 <template>
     <div class="romantic-container">
+      <IntroGate />
+      <ScrollNav />
+      <MusicPlayer />
       <!-- Анімований фон з пелюстками троянд -->
       <div class="rose-petals-background">
         <div
@@ -45,6 +48,9 @@ import LoveLetterModal from "./components/LoveLetterModal.vue";
 import PhotoGallery from "./components/PhotoGallery.vue";
 import MemoryMoments from "./components/MemoryMoments.vue";
 import SiteFooter from "./components/SiteFooter.vue";
+import ScrollNav from "./components/ScrollNav.vue";
+import MusicPlayer from "./components/MusicPlayer.vue";
+import IntroGate from "./components/IntroGate.vue";
 
 const { special } = useSpecialDay()
 
