@@ -40,6 +40,9 @@ export const config = {
         { type: "photo", src: `${base}photos/1.jpg`},
         { type: "video", src: `${base}photos/4.mp4`},
         { type: "video", src: `${base}photos/3.mp4`},
+        { type: "video", src: `${base}photos/5.mp4`},
+        { type: "photo", src: `${base}photos/6.jpg`},
+        { type: "photo", src: `${base}photos/7.jpg`},
     ],
 
     // ------------------------------------------------------------
