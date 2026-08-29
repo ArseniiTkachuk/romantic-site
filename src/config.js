@@ -36,10 +36,10 @@ export const config = {
     // ГАЛЕРЕЯ — треба додати фото у папку /public/photos/ і прописати їх тут.
     // ------------------------------------------------------------
     gallery: [
-        { type: "photo", src: `${base}photos/2.jpg`},
         { type: "photo", src: `${base}photos/1.jpg`},
-        { type: "video", src: `${base}photos/4.mp4`},
+        { type: "photo", src: `${base}photos/2.jpg`},
         { type: "video", src: `${base}photos/3.mp4`},
+        { type: "video", src: `${base}photos/4.mp4`},
         { type: "video", src: `${base}photos/5.mp4`},
         { type: "photo", src: `${base}photos/6.jpg`},
         { type: "photo", src: `${base}photos/7.jpg`},
@@ -93,20 +93,6 @@ export const config = {
     // letter — якщо вказано, підміняє лист саме на цей день
     // ------------------------------------------------------------
     holidays: [
-        {
-            date: '2026-08-06',
-            name: "Місяць разом",
-            effect: 'hearts',
-            heroMessage: 'Сьогодні рівно місяць як ми разом.',
-            letter: {
-                title: 'З Річницею сонечко ',
-                body: `Сьогодні особливий день, рівно 31 день як ми разом.
-
-Місяць це мало а особливо з тобою тому я хочу щоб ми перетворили цей місяць спочатку в рік а потім у все наше спільне майбутнє.
-
-Дякую, за цей спільний час.`,
-            },
-        },
         {
             date: '02-14',
             name: "День закоханих",
