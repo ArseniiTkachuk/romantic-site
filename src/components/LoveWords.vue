@@ -1,9 +1,10 @@
 <template>
   <section class="section words-section" id="words">
-    <p class="eyebrow">слова на сьогодні</p>
-    <h2 class="words-title">{{ todayWord }}</h2>
-    <div class="divider">❀</div>
-    <p class="words-note">кожен день тут з'являються нові слова — заглядай частіше</p>
+    <div class="glass">
+      <p class="eyebrow">слова на сьогодні</p>
+      <h2 class="words-title">{{ todayWord }}</h2>
+      <p class="words-note">кожен день тут з’являються нові слова — заглядай частіше</p>
+    </div>
   </section>
 </template>
 
@@ -11,8 +12,7 @@
 import { computed } from 'vue'
 import { config } from '../config.js'
 
-// детермінований вибір фрази за днем року — та сама фраза тримається
-// цілий день і природньо змінюється по колу день у день
+// Одна й та сама фраза тримається цілий день і змінюється по колу
 const todayWord = computed(() => {
   const now = new Date()
   const start = new Date(now.getFullYear(), 0, 0)
@@ -25,27 +25,31 @@ const todayWord = computed(() => {
 
 <style scoped>
 .words-section {
-  text-align: center;
-  max-width: 720px;
+  max-width: 1000px;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 28px;
+  padding: clamp(30px, 6vw, 70px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .words-title {
-  font-size: clamp(24px, 4vw, 38px);
+  font-family: var(--font-display);
+  color: var(--color-white);
+  font-size: clamp(26px, 4.6vw, 46px);
   font-style: italic;
-  line-height: 1.4;
-  margin-top: 16px;
-}
-
-.divider {
-  margin: 32px auto;
-  color: var(--color-gold);
-  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.35;
+  margin: 12px 0 26px;
 }
 
 .words-note {
-  font-family: var(--font-utility);
-  font-size: 13px;
-  letter-spacing: 0.05em;
+  font-size: 15px;
   color: var(--color-ink-soft);
+  margin: 0;
 }
 </style>

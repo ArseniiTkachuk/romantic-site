@@ -1,40 +1,31 @@
 <template>
   <section class="hero" id="hero">
-    <div class="hero-decor">🌹</div>
+    <h1 class="names">Арсен<i>&amp;</i>{{ config.partner.nominative }}</h1>
 
-    <h1 class="hero-title">{{ heroMessage }}</h1>
+    <h2 class="hero-title">{{ heroMessage }}</h2>
 
-    <p class="eyebrow">разом уже</p>
-
-    <div class="counter">
-      <div class="unit">
-        <span class="num">{{ time.years }}</span>
-        <span class="label">роки</span>
+    <div class="dials">
+      <div v-if="time.years > 0" class="dial" :style="{ '--p': 100 }">
+        <div><b>{{ time.years }}</b><span>{{ time.years === 1 ? 'рік' : 'роки' }}</span></div>
       </div>
-      <div class="unit">
-        <span class="num">{{ time.months }}</span>
-        <span class="label">місяці</span>
+      <div class="dial" :style="{ '--p': (time.months / 12) * 100 }">
+        <div><b>{{ time.months }}</b><span>міс</span></div>
       </div>
-      <div class="unit">
-        <span class="num">{{ time.days }}</span>
-        <span class="label">дні</span>
+      <div class="dial" :style="{ '--p': (time.days / 31) * 100 }">
+        <div><b>{{ time.days }}</b><span>дн</span></div>
       </div>
-      <div class="unit">
-        <span class="num">{{ pad(time.hours) }}</span>
-        <span class="label">години</span>
+      <div class="dial" :style="{ '--p': (time.hours / 24) * 100 }">
+        <div><b>{{ pad(time.hours) }}</b><span>год</span></div>
       </div>
-      <div class="unit">
-        <span class="num">{{ pad(time.minutes) }}</span>
-        <span class="label">хвилини</span>
+      <div class="dial" :style="{ '--p': (time.minutes / 60) * 100 }">
+        <div><b>{{ pad(time.minutes) }}</b><span>хв</span></div>
       </div>
-      <div class="unit">
-        <span class="num">{{ pad(time.seconds) }}</span>
-        <span class="label">секунди</span>
+      <div class="dial" :style="{ '--p': (time.seconds / 60) * 100 }">
+        <div><b>{{ pad(time.seconds) }}</b><span>сек</span></div>
       </div>
     </div>
 
-    <p class="hero-sub">{{ time.totalDays.toLocaleString('uk-UA') }} днів — і кожен з них був кращим завдяки тобі</p>
-
+    <p class="hero-sub">{{ time.totalDays.toLocaleString('uk-UA') }} днів — і кожен із них був кращим завдяки тобі</p>
   </section>
 </template>
 
@@ -42,7 +33,7 @@
 import { useCountdown } from '../composables/useCountdown.js'
 import { config } from '../config.js'
 
-const props = defineProps({
+defineProps({
   heroMessage: {
     type: String,
     default: null,
@@ -61,76 +52,84 @@ function pad(n) {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 40px 24px;
-  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 70px clamp(20px, 5vw, 48px) 50px;
 }
 
-.hero-decor {
-  font-size: 40px;
-  margin-bottom: 18px;
-  filter: drop-shadow(0 8px 16px rgba(122, 39, 57, 0.2));
+.names {
+  font-family: var(--font-script);
+  font-size: clamp(48px, 11vw, 130px);
+  line-height: 1.05;
+  text-shadow: 0 0 40px rgba(255, 197, 122, 0.35);
+  overflow-wrap: anywhere;
+}
+
+.names i {
+  font-style: normal;
+  color: var(--color-gold);
+  font-size: 0.55em;
+  padding: 0 0.2em;
 }
 
 .hero-title {
-  font-size: clamp(28px, 5vw, 52px);
   font-style: italic;
-  max-width: 780px;
-  margin: 14px 0 40px;
-  line-height: 1.25;
+  font-weight: 300;
+  font-size: clamp(22px, 3.4vw, 34px);
+  margin: 26px 0 38px;
+  color: var(--color-ink-soft);
+  max-width: 26ch;
 }
 
-.counter {
+.dials {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 18px;
-  margin-bottom: 28px;
+  gap: clamp(12px, 2.4vw, 26px);
 }
 
-.unit {
-  background: var(--color-white);
-  border: 1px solid var(--color-blush);
-  border-radius: 16px;
-  padding: 18px 20px;
-  min-width: 84px;
-  box-shadow: var(--shadow-soft);
+.dial {
+  --p: 0;
+  width: clamp(78px, 13vw, 118px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: relative;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background: conic-gradient(var(--color-gold) calc(var(--p) * 1%), rgba(255, 255, 255, 0.12) 0);
+  filter: drop-shadow(0 0 10px rgba(255, 197, 122, 0.25));
 }
 
-.num {
+.dial::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: #0c1033;
+}
+
+.dial div {
+  position: relative;
+  line-height: 1.1;
+}
+
+.dial b {
   display: block;
-  font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 40px);
-  font-weight: 700;
-  color: var(--color-rose-deep);
-  line-height: 1;
+  font-weight: 400;
+  font-size: clamp(24px, 4.4vw, 38px);
+  font-variant-numeric: tabular-nums;
 }
 
-.label {
-  display: block;
-  margin-top: 8px;
-  font-family: var(--font-utility);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #b60b1a;
+.dial span {
+  font-size: clamp(11px, 1.6vw, 14px);
+  color: var(--color-ink-soft);
 }
 
 .hero-sub {
+  margin-top: 30px;
   font-style: italic;
   color: var(--color-ink-soft);
-  max-width: 480px;
-}
-
-@keyframes bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
-}
-
-@media (max-width: 640px) {
-  .counter { gap: 10px; }
-  .unit { min-width: 70px; padding: 14px 12px; }
+  max-width: 46ch;
 }
 </style>

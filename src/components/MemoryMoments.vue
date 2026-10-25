@@ -1,7 +1,7 @@
 <template>
   <section class="section" id="moments">
     <p class="eyebrow">теплі спогади</p>
-    <h2>Моменти, які хочеться пам'ятати</h2>
+    <h2>Моменти, які хочеться пам’ятати</h2>
 
     <div class="list">
       <article
@@ -30,14 +30,14 @@ import { config } from '../config.js'
 .list {
   display: flex;
   flex-direction: column;
-  gap: 64px;
+  gap: 72px;
   margin-top: 48px;
 }
 
 .moment {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 48px;
   align-items: center;
 }
 
@@ -50,28 +50,36 @@ import { config } from '../config.js'
 }
 
 .photo img {
+  display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  max-width: 340px;
+  margin: 0 auto;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 999px 999px 14px 14px;
+  border: 1px solid var(--color-blush);
   box-shadow: var(--shadow-soft);
-  background: var(--color-blush);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .text h3 {
-  font-size: clamp(20px, 3vw, 28px);
+  font-style: italic;
+  color: var(--color-gold);
+  font-size: clamp(22px, 3.2vw, 32px);
   margin-bottom: 14px;
 }
 
 .text p {
   color: var(--color-ink-soft);
-  line-height: 1.7;
+  line-height: 1.75;
+  margin: 0;
 }
 
 @media (max-width: 720px) {
   .moment, .moment.reverse {
     grid-template-columns: 1fr;
     direction: ltr;
+    gap: 24px;
   }
 }
 </style>

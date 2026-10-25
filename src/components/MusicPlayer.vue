@@ -6,7 +6,7 @@
       @click="toggle"
       :aria-label="isPlaying ? 'Вимкнути музику' : 'Увімкнути музику'"
   >
-    <span class="disc">🌹</span>
+    <span class="disc">🌙</span>
     <span class="waves" v-if="isPlaying">
       <span></span><span></span><span></span>
     </span>
@@ -27,8 +27,8 @@ const { isPlaying, toggle, hasMusic } = useBackgroundMusic()
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(43, 0, 3, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(8, 11, 38, 0.6);
   backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
@@ -46,20 +46,10 @@ const { isPlaying, toggle, hasMusic } = useBackgroundMusic()
 .disc {
   font-size: 20px;
   display: inline-block;
-  animation: none;
-}
-
-.music-btn.playing .disc {
-  animation: spin 6s linear infinite;
 }
 
 .music-btn.playing {
-  border-color: var(--color-rose-deep, #b60b1a);
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  border-color: var(--color-gold);
 }
 
 .waves {
@@ -72,7 +62,7 @@ const { isPlaying, toggle, hasMusic } = useBackgroundMusic()
 
 .waves span {
   width: 2px;
-  background: var(--color-rose-deep, #b60b1a);
+  background: var(--color-gold);
   border-radius: 2px;
   animation: wave 0.9s ease-in-out infinite;
 }

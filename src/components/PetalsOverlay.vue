@@ -63,7 +63,7 @@ const particles = Array.from({ length: props.count }, (_, id) => {
 .particle {
   position: absolute;
   top: -8vh;
-  color: var(--color-rose);
+  color: var(--color-gold);
   opacity: 0.85;
   animation-name: fall;
   animation-timing-function: linear;

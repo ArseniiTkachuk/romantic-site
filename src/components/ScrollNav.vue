@@ -1,8 +1,6 @@
 <template>
-  <!-- Тонка смуга прогресу скролу зверху сторінки -->
   <div class="scroll-progress" :style="{ width: progress + '%' }"></div>
 
-  <!-- Крапки-навігація збоку з підписами (для широких екранів) -->
   <nav class="section-dots" aria-label="Навігація по сторінці">
     <button
         v-for="s in sections"
@@ -16,7 +14,6 @@
     </button>
   </nav>
 
-  <!-- Крапки-навігація знизу (для мобільних) -->
   <nav class="mobile-dots" aria-label="Навігація по сторінці">
     <span class="mobile-active-label">{{ activeLabel }}</span>
     <div class="mobile-dots-row">
@@ -35,7 +32,6 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 
-// Список секцій — id має співпадати з id, який додано в кожен компонент
 const sections = [
   { id: 'hero', label: 'Початок' },
   { id: 'gallery', label: 'Галерея' },
@@ -69,7 +65,6 @@ onMounted(() => {
   window.addEventListener('scroll', updateProgress, { passive: true })
   window.addEventListener('resize', updateProgress)
 
-  // IntersectionObserver визначає, яка секція зараз "активна" на екрані
   observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -99,13 +94,13 @@ onUnmounted(() => {
   position: fixed;
   top: 0;
   left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--color-gold, #d4a24c), var(--color-rose-deep, #b60b1a));
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-gold));
+  box-shadow: 0 0 10px var(--color-gold);
   z-index: 200;
   transition: width 0.1s linear;
 }
 
-/* ---------- Десктоп: крапки збоку з підписами ---------- */
 .section-dots {
   position: fixed;
   right: 28px;
@@ -130,11 +125,11 @@ onUnmounted(() => {
 
 .dot-label {
   font-family: var(--font-utility);
-  font-size: 11px;
-  letter-spacing: 0.05em;
+  font-size: 13px;
+  font-style: italic;
   color: rgba(255, 255, 255, 0.55);
   white-space: nowrap;
-  transition: color 0.25s ease, opacity 0.25s ease;
+  transition: color 0.25s ease;
 }
 
 .dot {
@@ -144,7 +139,7 @@ onUnmounted(() => {
   background: rgba(255, 255, 255, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.5);
   flex-shrink: 0;
-  transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .dot-item:hover .dot-label {
@@ -156,13 +151,13 @@ onUnmounted(() => {
 }
 
 .dot-item.active .dot-label {
-  color: var(--color-white, #fff);
-  font-weight: 600;
+  color: var(--color-gold);
 }
 
 .dot-item.active .dot {
-  background: var(--color-rose-deep, #b60b1a);
-  border-color: var(--color-rose-deep, #b60b1a);
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  box-shadow: 0 0 12px var(--color-gold);
   transform: scale(1.3);
 }
 
@@ -172,7 +167,6 @@ onUnmounted(() => {
   }
 }
 
-/* ---------- Мобільні: панель з крапками знизу ---------- */
 .mobile-dots {
   display: none;
 }
@@ -188,7 +182,7 @@ onUnmounted(() => {
     bottom: 18px;
     transform: translateX(-50%);
     z-index: 150;
-    background: rgba(43, 0, 3, 0.55);
+    background: rgba(8, 11, 38, 0.6);
     backdrop-filter: blur(6px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 20px;
@@ -197,10 +191,9 @@ onUnmounted(() => {
 
   .mobile-active-label {
     font-family: var(--font-utility);
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-white, #fff);
+    font-size: 12px;
+    font-style: italic;
+    color: var(--color-white);
     opacity: 0.85;
   }
 
@@ -222,8 +215,8 @@ onUnmounted(() => {
   }
 
   .mobile-dot.active {
-    background: var(--color-rose-deep, #b60b1a);
-    border-color: var(--color-rose-deep, #b60b1a);
+    background: var(--color-gold);
+    border-color: var(--color-gold);
     transform: scale(1.4);
   }
 }

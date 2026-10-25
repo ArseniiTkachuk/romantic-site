@@ -1,6 +1,6 @@
 <template>
   <footer class="footer" id="footer">
-    <div class="rose-row">🌹 ❀ 🌹</div>
+    <div class="stars-row">✦ ❀ ✦</div>
     <h2 class="main-line">{{ config.footer.mainLine }}</h2>
     <p v-for="(line, i) in config.footer.subLines" :key="i" class="sub-line">
       {{ line }}
@@ -16,38 +16,38 @@ import { config } from '../config.js'
 <style scoped>
 .footer {
   text-align: center;
-  padding: 100px 24px 80px;
-  background: rgb(87 1 19 / 0.24);
+  padding: clamp(80px, 12vw, 140px) 24px 120px;
+  background: linear-gradient(180deg, transparent, rgba(255, 197, 122, 0.06));
   color: var(--color-white);
 }
 
-.rose-row {
+.stars-row {
   font-size: 20px;
+  color: var(--color-gold);
   opacity: 0.8;
   margin-bottom: 24px;
 }
 
 .main-line {
+  font-family: var(--font-script);
   color: var(--color-white);
-  font-size: clamp(26px, 5vw, 44px);
-  font-style: italic;
-  max-width: 800px;
-  margin: 0 auto 28px;
-  line-height: 1.35;
+  font-size: clamp(36px, 7vw, 74px);
+  line-height: 1.15;
+  max-width: 16ch;
+  margin: 0 auto 30px;
+  text-shadow: 0 0 36px rgba(255, 197, 122, 0.35);
 }
 
 .sub-line {
-  font-size: 16px;
-  opacity: 0.85;
+  font-style: italic;
+  color: var(--color-ink-soft);
   margin: 6px 0;
 }
 
 .signature {
-  margin-top: 30px;
-  font-family: var(--font-utility);
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  opacity: 0.6;
+  margin-top: 34px;
+  font-family: var(--font-script);
+  font-size: 30px;
+  color: var(--color-gold);
 }
 </style>
